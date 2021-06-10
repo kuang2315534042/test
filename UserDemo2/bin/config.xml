@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration SYSTEM 'config.dtd'>
+<configuration>
+	<datasource class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/db_user"/>
+		<property name="user" value="root"/>
+		<property name="password" value="root"/>
+	</datasource>
+	
+	<sqlinfo>
+		<select id="selectAll"  resultType="com.apps.pojo.User">
+			select * from tb_user
+		</select>
+		
+		<select id="selectById"  resultType="com.apps.pojo.User">
+			select * from tb_user where uid=?
+		</select>
+		
+		<select id="selectUsersByUnameAndAddr"  resultType="com.apps.pojo.User">
+			select * from tb_user where uname like concat('%', ?, '%') and address like concat('%', ?, '%')
+		</select>
+	
+		<update id="deleteUser">
+			delete from tb_user where uid=?
+		</update>
+		
+		<update id="insertUser" parameterType="com.apps.pojo.User">
+			insert into tb_user(uname, address, age) values(#{uname}, #{address}, #{age})
+		</update>
+		
+		<update id="updateUser" parameterType="com.apps.pojo.User">
+			update tb_user set uname=#{uname}, age=#{age}, address=#{address} where uid=#{uid}
+		</update>
+		
+	</sqlinfo>
+	
+</configuration>
+
+
+
+
+

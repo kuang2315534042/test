@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT configuration (datasource, sqlinfo)>
+<!ELEMENT datasource (property)*>
+<!ELEMENT sqlinfo (select*, update*)>
+
+<!ATTLIST datasource class CDATA #REQUIRED>
+<!ELEMENT property EMPTY>
+<!ATTLIST property name CDATA #IMPLIED>
+<!ATTLIST property value CDATA #IMPLIED>
+
+
+<!ELEMENT select (#PCDATA)>
+<!ATTLIST select id ID #REQUIRED>
+<!ATTLIST select resultType CDATA #IMPLIED>
+<!ATTLIST select parameterType CDATA #IMPLIED>
+
+<!ELEMENT update (#PCDATA)>
+<!ATTLIST update id ID #REQUIRED>
+<!ATTLIST update resultType CDATA #IMPLIED>
+<!ATTLIST update parameterType CDATA #IMPLIED>
+
